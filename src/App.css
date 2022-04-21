@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +24,104 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.header {
+  background-color: #005391;
+  text-align: center;
+  position: relative;
+  top: 30px;
+}
+
+.countdown {
+  height: 80px;
+  width: 350px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  text-align: center;
+  background-color: maroon;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 1em;
+  grid-auto-rows: 400px;
+}
+
+.intro > div {
+  background: #ddd;
+  padding: 1em;
+}
+
+.selection {
+  margin-top: 2em;;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  margin-left: 8em;
+  margin-right: 8em;
+}
+
+.selection > div {
+  text-align: center;
+}
+
+
+select {
+  width: 200px;
+  height: 100px;
+}
+
+button {
+  background-color: #005391;
+  color: white;
+  width: 100px;
+  height: 40px;
+}
+
+.world_cups_won {
+  position: relative;
+  top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  margin-left: 8em;
+  margin-right: 8em;
+}
+
+.world_cups_won > div {
+  text-align: center;
+  font-size: large;
+}
+
+.stats {
+  position: relative;
+  top: 30px;
+  margin-left: 8em;
+  margin-right: 8em;
+  height: 100px;
+  text-align: center;
+  justify-content: center;
+}
+
+.additional_info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  margin-left: 8em;
+  margin-right: 8em;
+}
+
+.additional_info > div {
+  position: relative;
+  height: 800px;
+  top: 40px;
+  border-style: solid;
+}
+
+.text_center {
+  text-align: center;
 }
