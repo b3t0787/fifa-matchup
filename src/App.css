@@ -72,7 +72,6 @@
 
 select {
   width: 200px;
-  height: 100px;
 }
 
 button {
@@ -109,6 +108,7 @@ button {
 
 .additional_info {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
   margin-left: 8em;
@@ -120,8 +120,13 @@ button {
   height: 800px;
   top: 40px;
   border-style: solid;
+  top: 5em;
 }
 
 .text_center {
   text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
 }

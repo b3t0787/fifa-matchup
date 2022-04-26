@@ -1,18 +1,35 @@
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import { FaQuestion } from 'react-icons/fa';
 import Listresults from '../components/Listresults';
 
 function HomePage() {
 
     const [showResults, setWaitingResults] = useState(false);
+    const [results, setResults] = useState([]);
+    const [nations, setNations] = useState([]);
+    const [country_1, setCountry_1] = useState();
+    const [country_2, setCountry_2] = useState();
 
     const userClickResults = async () => {
+        const response = await fetch(`http://localhost:8000/results/left/${country_1}/right/${country_2}`);
+        const data = await response.json();
+        setResults(data);
         setWaitingResults(true);
     }
 
     const resetResults = async () => {
         setWaitingResults(false);
     }
+
+    const loadNations = async () => {
+        const response = await fetch(`http://localhost:8000/Nations`); // calling rest API to obtain array of nations
+        const data = await response.json();
+        setNations(data);
+    };
+
+    useEffect( () => {
+        loadNations();
+    }, []);
     
     return (
         <>
@@ -40,16 +57,10 @@ function HomePage() {
         </div>
         <div className="selection">
             <div>
-            <h2>Country</ h2>
-            <select>
+            <h2>Nation</ h2>
+            <select onChange={(e) => setCountry_1(e.target.value)}>
                 <option></option>
-                <option>Spain</option>
-                <option>Brazil</option>
-                <option>USA</option>
-                <option>France</option>
-                <option>Mexico</option>
-                <option>South Korea</option>
-                <option>Argentina</option>
+                    {nations.map((nation) => <option value={nation.nation_id}>{nation.name}</option>)}
                 </select>
             </div>
             <div>
@@ -61,20 +72,14 @@ function HomePage() {
                 <button onClick={userClickResults}>GO</button>
             </div>
             <div>
-            <h2>Country </h2>
-                <select>
+            <h2>Nation</h2>
+                <select onChange={(e) => setCountry_2(e.target.value)}>
                     <option></option>
-                    <option>Spain</option>
-                    <option>Brazil</option>
-                    <option>USA</option>
-                    <option>France</option>
-                    <option>Mexico</option>
-                    <option>South Korea</option>
-                    <option>Argentina</option>
+                    {nations.map((nation) => <option value={nation.nation_id}>{nation.name}</option>)}
                 </select>
             </div>
         </div>
-        <Listresults showResults={showResults} />
+        <Listresults showResults={showResults} results={results} />
         
 
         </>
